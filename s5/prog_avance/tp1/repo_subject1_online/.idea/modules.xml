@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/repo45/modelemessagerie/modelemessagerie.iml" filepath="$PROJECT_DIR$/repo45/modelemessagerie/modelemessagerie.iml" />
+      <module fileurl="file://$PROJECT_DIR$/repo45/modeles.iml" filepath="$PROJECT_DIR$/repo45/modeles.iml" />
+      <module fileurl="file://$PROJECT_DIR$/repo45/modelesystemefichier/modelesystemefichier.iml" filepath="$PROJECT_DIR$/repo45/modelesystemefichier/modelesystemefichier.iml" />
+      <module fileurl="file://$PROJECT_DIR$/repo45/modeletictactoemonoposte/modeletictactoemonoposte.iml" filepath="$PROJECT_DIR$/repo45/modeletictactoemonoposte/modeletictactoemonoposte.iml" />
+      <module fileurl="file://$PROJECT_DIR$/repo45/modeletictactoeonline/modeletictactoeonline.iml" filepath="$PROJECT_DIR$/repo45/modeletictactoeonline/modeletictactoeonline.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/repo_sujet1_online.iml" filepath="$PROJECT_DIR$/.idea/repo_sujet1_online.iml" />
+      <module fileurl="file://$PROJECT_DIR$/repo45/sujet1_online/sujet1_online.iml" filepath="$PROJECT_DIR$/repo45/sujet1_online/sujet1_online.iml" />
+    </modules>
+  </component>
+</project>

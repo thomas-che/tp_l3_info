@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/modelemessagerie/modelemessagerie.iml" filepath="$PROJECT_DIR$/modelemessagerie/modelemessagerie.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modeles.iml" filepath="$PROJECT_DIR$/modeles.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modelesystemefichier/modelesystemefichier.iml" filepath="$PROJECT_DIR$/modelesystemefichier/modelesystemefichier.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modeletictactoemonoposte/modeletictactoemonoposte.iml" filepath="$PROJECT_DIR$/modeletictactoemonoposte/modeletictactoemonoposte.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modeletictactoeonline/modeletictactoeonline.iml" filepath="$PROJECT_DIR$/modeletictactoeonline/modeletictactoeonline.iml" />
+    </modules>
+  </component>
+</project>

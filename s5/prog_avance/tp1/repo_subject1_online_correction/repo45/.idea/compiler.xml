@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="modeletictactoeonline" />
+        <module name="modelemessagerie" />
+        <module name="modeletictactoemonoposte" />
+        <module name="modelesystemefichier" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="modelemessagerie" target="8" />
+      <module name="modeles" target="1.5" />
+      <module name="modelesystemefichier" target="8" />
+      <module name="modeletictactoemonoposte" target="8" />
+      <module name="modeletictactoeonline" target="8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
