@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <div class="container" id="notebook-container">
+
+        <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell">
+        <div class="text_cell_render border-box-sizing rendered_html">
+        <h1 id="TP1-d'observations">TP1 d'observations<a class="anchor-link" href="#TP1-d'observations">¶</a></h1>
+        </div>
+        </div>
+        </div>
+        <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell">
+        <div class="text_cell_render border-box-sizing rendered_html">
+        <p></p><h1><span style="color:red">INTRODUCTION</span></h1> &lt;/br&gt;<p></p>
+        <p>L'objectif de ce TP est d'observer les différents éléments du réseau et d'en construire une représentation. L'outil utilisé est <b><em>netkit</em></b> qui permet de construire une architecture réseau à partir de machines virtuelles.</p>
+        
+        </div>
+        </div>
+        </div>
+        <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell">
+        <div class="text_cell_render border-box-sizing rendered_html">
+        <p><span style="color:red"> 1. Lancement du lab <br></span>
+        Récupérer sous Celene l'archive <em>labobs.tgz</em>. Une fois décompressé, se placer dans le dossier labobs et lancer la commande : <b><em>lstart</em></b>.
+         Un ensemble de 16 machines virtuelles s'exécutent mais seuls deux 
+        terminaux pour alice et bob ont été lancés. Toutes les commandes seront 
+        exécutées sur une de ces deux machines. En revanche il sera possible de 
+        capturer des trames pour les observations sur différents réseaux de 
+        l'architecture construite dans ce lab. Pour cela le script <b><em>ecoute</em></b> est disponible et prend en paramètre le nom du réseau que l'on veut observer. Ce script permet de lancer <b><em>wireshark</em></b>
+         un analyseur de paquets afin de capturer les trames échangées entre les
+         machines virtuelles du lab. Il doit être lancé à partir du terminal de 
+        la machine hôte.</p>
+        
+        </div>
+        </div>
+        </div>
+        <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell">
+        <div class="text_cell_render border-box-sizing rendered_html">
+        <p></p><h1><span style="color:red">PARTIE 1 : géographie du réseau</span></h1>
+         &lt;/br&gt;
+        La première partie a pour objectif d'obtenir la géographie du réseau en 
+        utilisant des commandes simples localement ou de questions/réponses à un
+         hôte distant.<p></p>
+        
+        </div>
+        </div>
+        </div>
+        <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell">
+        <div class="text_cell_render border-box-sizing rendered_html">
+        <p><span style="color:red">2. Premières observations <br></span>
+        Sur alice et bob exécuter la commande : <b><em>ifconfig</em></b></p>
+        
+        </div>
+        </div>
+        </div>Quelles sont les différentes adresses d'alice et bob ?
+        alice : 
+        bob : 
+        <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell">
+        <div class="text_cell_render border-box-sizing rendered_html">
+        <p>Sur bob exécuter la commande <b><em>ping 41.13.0.50</em></b> puis la commande <b><em>ping alice.blue.net</em></b> <br><br>
+        Le nom du domaine auquel appartient bob est <b><em>red.net</em></b>. Quelles sont les deux commandes à exécuter sur alice permettant d'avoir une réponse de bob (<b><em>ping</em></b>).</p>
+        
+        </div>
+        </div>
+        </div>Sur alice 
+        
+        <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell">
+        <div class="text_cell_render border-box-sizing rendered_html">
+        <p>Sur alice exécuter à nouveau la commande <b><em>ping 80.8.0.50</em></b> mais en plaçant une sonde sur le réseau local d'alice.</p>
+        <ol>
+            <li>Sur la machine hôte exécuter la commande <b><em>./ecoute lana</em></b> </li>
+            <li>A partir d'alice exécuter <b><em>ping 80.8.0.50</em></b> </li> 
+            <li>Observer les différents paquets échangés</li>
+            <li>Retrouver dans les trames ICMP les adresses manipulées</li>
+        </ol>
+        </div>
+        </div>
+        </div>
+        <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell">
+        <div class="text_cell_render border-box-sizing rendered_html">
+        <p><span style="color:red">3. Observations du cheminement avec routage</span> <br>
+        Exécuter la commande <b><em>route -n </em></b><em>&lt;/em&gt; sur alice. Quel est le rôle de 41.13.0.1 ?</em></p><em>
+        
+        </em></div><em>
+        </em></div><em>
+        </em></div><em>
+        <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell">
+        <div class="text_cell_render border-box-sizing rendered_html">
+        <p>Exécuter la commande <b><em>traceroute -n 80.8.0.50 </em></b><em>&lt;/em&gt; sur alice et <b><em>traceroute -n 41.13.0.50 </em></b><em>&lt;/em&gt; sur bob. Quels sont les chemins suivis par les messages à partir d'alice et à partir de bob ?</em></em></p><em><em>
+        
+        </em></em></div><em><em>
+        </em></em></div><em><em>
+        </em></em></div><em><em>alice : 
+        bob : 
+        <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell">
+        <div class="text_cell_render border-box-sizing rendered_html">
+        <p>En utilisant les commandes vues précédemment, représenter 
+        schématiquement l'ensemble des machines sur la route entre alice et bob 
+        et les liens entre elles. Cette représentation sera à compléter dans la 
+        suite avec toutes les nouvelles machines observées.</p>
+        
+        </div>
+        </div>
+        </div>
+        <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell">
+        <div class="text_cell_render border-box-sizing rendered_html">
+        <p></p><h1><span style="color:red">PARTIE 2 : HTTP et SMTP</span></h1> &lt;/br&gt;
+        La seconde partie a pour objectif d'observer et utiliser des protocoles haut niveau.<p></p>
+        
+        </div>
+        </div>
+        </div>
+        <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell">
+        <div class="text_cell_render border-box-sizing rendered_html">
+        <p><span style="color:red">4. Observations du protocole http</span> <br>
+        Sur alice exécuter la commande <b><em>lynx `http://www.lexique.com`</em></b>. Une page web doit s'afficher.<br>
+        Quelle est l'adresse du serveur web <code>www.lexique.com</code> ?</p>
+        
+        </div>
+        </div>
+        </div>adresse de `www.lexique.com` : 
+        <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell">
+        <div class="text_cell_render border-box-sizing rendered_html">
+        <p>La commande <b><em>nmap</em></b> permet de scanner les ports ouverts sur une machine. Exécuter sur le terminal d'alice la commande <b><em>nmap `www.lexique.com`</em></b> pour définir le port associé à <strong>http</strong>.</p>
+        
+        </div>
+        </div>
+        </div>http :
+        <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell">
+        <div class="text_cell_render border-box-sizing rendered_html">
+        <p>A partir de bob exécuter à nouveau la commande <b><em>lynx `http://www.lexique.com`</em></b> mais en plaçant une sonde sur le réseau local de bob.</p>
+        <ol>
+            <li>Sur la machine hôte exécuter la commande <b><em>./ecoute lanb</em></b> </li>
+            <li>A partir de bob accéder à la page web <em> `www.lexique.com`</em> </li> 
+            <li>Observer les différents paquets échangés (utiliser la fonction <b>suivre HTTP stream</b> à partir d'un clic droit sur la première trame http)</li>
+        </ol>
+        </div>
+        </div>
+        </div>Quels sont les différents protocoles présents : 
+        Quels sont les différentes étapes pour charger la page web : faire un schéma ...
+        
+        <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell">
+        <div class="text_cell_render border-box-sizing rendered_html">
+        <p>La commande nc pour netcat est un outil très utile pour tester des 
+        protocoles client-serveur. Il permet d'ouvrir des connexions réseau 
+        (sockets) et de réaliser des échanges en ligne de commande. <br>
+        Par exemple pour tester le protocole http dans le terminal de bob, 
+        lancer la même sonde que précédemment et reprendre les commandes :</p>
+        <ol>
+            <li>nc -v www.perdu.com 80</li>
+            <li>GET / HTTP/1.0</li>
+            <li>Host: www.perdu.com</li>
+            <li>Une ligne vide</li>
+            <li>Valider par la touche Entrée</li>
+        </ol>
+        </div>
+        </div>
+        </div>
+        <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell">
+        <div class="text_cell_render border-box-sizing rendered_html">
+        <p><span style="color:red">5. Observations du protocole smtp</span> <br>
+        Faire cette partie uniquement s'il vous reste beaucoup de temps !<br>
+        A l'aide du logiciel <b><em>pine</em></b>, vérifier qu'alice et bob 
+        peuvent bien échanger des courriers électroniques. Leurs adresses 
+        respectives sont alice@jmail.com et bob@cold.net et leur mot de passe à 
+        tous les deux est <em>guest</em>. <br>
+        Dans la configuration de <b><em>pine</em></b>, identifiez les paramètres de connexion aux différents serveurs impliqués.</p>
+        
+        </div>
+        </div>
+        </div>alice : 
+        bob : 
+        <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell">
+        <div class="text_cell_render border-box-sizing rendered_html">
+        <p>Pour observer les échanges, lancer une sonde sur le réseau d'alice <b><em>./ecoute lana</em></b>. Avec <b><em>pine</em></b> d'alice rédiger un mail à destination de bob. Reproduire cet envoi avec <strong>nc</strong> après avoir cherché quel est le port ouvert pour le protocole smtp sur la machine smtp.jmail.com</p>
+        
+        </div>
+        </div>
+        </div>nmap smtp.jmail.com "port"
+        
+        
+        
+        <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell">
+        <div class="text_cell_render border-box-sizing rendered_html">
+        <p>Compléter l'observation en lancant une sonde sur le réseau <em>rezo</em> <b><em>./ecoute rezo</em></b> et sur le réseau de bob <b><em>./ecoute lanb</em></b> . Quel est le chemin suivi par le mail jusqu'à bob ? Quel est le protocole utilisé pour la réception ?</p>
+        
+        </div>
+        </div>
+        </div>le chemin :
+        imap :
+        <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell">
+        <div class="text_cell_render border-box-sizing rendered_html">
+        <p></p><h1><span style="color:red">PARTIE 3 : DNS</span></h1> 
+        &lt;/br&gt;
+        La troisième partie a pour objectif d'observer le fonctionnement du 
+        protocole DNS pour faire le lien entre adresses IP et noms de domaines.<p></p>
+        
+        </div>
+        </div>
+        </div>
+        <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell">
+        <div class="text_cell_render border-box-sizing rendered_html">
+        <p><span style="color:red">6. Observations du protocole DNS</span> <br>La commande <b><em>dig</em></b> (DNS lookup utility) permet de tester la résolution de nom. Exécuter <b><em>dig www.perdu.com</em></b> sur bob et sur alice.</p>
+        
+        </div>
+        </div>
+        </div>Quel est le serveur qui peut faire la résolution de nom ? -&gt;  (sur bob)  (sur alice)
+        Quels sont les échanges réalisés ?
+        <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell">
+        <div class="text_cell_render border-box-sizing rendered_html">
+        <p>Sur alice et bob le fichier <b><em>/etc/resolv.conf</em></b> contient
+         les informations sur le serveur DNS accessible pour la résolution de 
+        nom. Vérifier qu'on retrouve les informations précédentes (cat 
+        /etc/resolv.conf).</p>
+        
+        </div>
+        </div>
+        </div>
+        <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell">
+        <div class="text_cell_render border-box-sizing rendered_html">
+        <p>Lancer deux sondes respectivement sur le réseau <b><em>lana</em></b> et <b><em>rezo</em></b> puis exécuter la commande <b><em>lynx http://www.lexique.com</em></b> sur alice. Observer les trames DNS dans les deux captures.</p>
+        
+        </div>
+        </div>
+        </div>
+        <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell">
+        <div class="text_cell_render border-box-sizing rendered_html">
+        <p>Il est possible également d'utiliser la commande <b><em>dig -t MX jmail.com</em></b>
+         pour trouver des informations sur un serveur smtp d'un domaine. 
+        Vérifier que les informations obtenues sont celles contenues dans les 
+        fichiers de configuration des clients mail.</p>
+        
+        </div>
+        </div>
+        </div>
+        <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell">
+        <div class="text_cell_render border-box-sizing rendered_html">
+        <p></p><h1><span style="color:red">PARTIE 4 : Configuration</span></h1>
+        <br>
+        Quelques notions de configuration.<p></p>
+        
+        </div>
+        </div>
+        </div>
+        <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell">
+        <div class="text_cell_render border-box-sizing rendered_html">
+        <p><span style="color:red">7. Ajout d'une machine sur le réseau d'alice</span> <br></p>
+        <p>A partir de la machine hôte ajouter une machine au réseau <b>lana</b> avec la commande <b><em>vstart --eth0=lana anne </em></b><em>&lt;/em&gt; et la configurer</em></p><em>
+        <ol>
+        
+        <li>ifconfig eth0 41.13.0.110/24</li>
+        <li>route add default gw 41.13.0.1</li>
+        <li>compléter le fichier /etc/resolv.conf</li>
+        </ol>
+        <br>
+        Vérifier que les commandes suivantes fonctionnent
+        <ol>
+            <li>lynx http://www.perdu.com </li>
+            <li>ping bob.red.net</li>
+        </ol>
+        </em></div><em>
+        </em></div><em>
+        </em></div><em>
+        <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell">
+        <div class="text_cell_render border-box-sizing rendered_html">
+        <p></p><h1><span style="color:red">PARTIE 5 : ARP</span></h1>
+        <br>
+        Dans cette partie il s'agit d'observer comment s'effectue le transfert 
+        des messages d'une machine à l'autre. Quelles sont les adresses 
+        manipulées et les différentes étapes réalisées ?<p></p>
+        
+        </div>
+        </div>
+        </div>
+        <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell">
+        <div class="text_cell_render border-box-sizing rendered_html">
+        <p><span style="color:red">8. Observations du rôle de ARP</span> <br>
+        Sur alice exécuter la commande <b><em>ping -c 2 41.13.0.110</em></b> (ou <b><em>ping -c 2 41.13.0.1</em></b> si la partie 4 n'a pas été faite) après avoir lancé une sonde sur le réseau <strong>lana</strong>.</p>
+        <ol>
+            <li>Quelles sont les deux premières trames capturées ?</li>
+            <li>Quelles sont les adresses manipulées par ces deux premières trames ?</li>
+            <li>Et en particulier à qui est envoyée la première trame ? </li>
+            <li>Quel est le rôle d'ARP ? </li>
+            </ol>
+        </div>
+        </div>
+        </div>
+        <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell">
+        <div class="text_cell_render border-box-sizing rendered_html">
+        <p>Renouveler la commande <b><em>ping</em></b><em>&lt;/em&gt; sur alice. Quelles sont les nouvelles trames capturées ?</em></p><em>
+        
+        </em></div><em>
+        </em></div><em>
+        </em></div><em>
+        <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell">
+        <div class="text_cell_render border-box-sizing rendered_html">
+        <p>Exécuter la commande <b><em>arp -n </em></b><em><em> sur alice.</em></em></p><em><em>
+        
+        </em></em></div><em><em>
+        </em></em></div><em><em>
+        </em></em></div><em><em>contenu de la table :
+        
+        <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell">
+        <div class="text_cell_render border-box-sizing rendered_html">
+        <p>Observer les trames icmp capturées et en particulier les adresses MAC/IP.</p>
+        
+        </div>
+        </div>
+        </div>request : 
+        reply  : 
+        <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell">
+        <div class="text_cell_render border-box-sizing rendered_html">
+        <p><span style="color:red">9. Dernière commande </span> <br>Pour arrếter le lab exécuter la commande <b><em>lcrash</em></b></p>
+        
+        </div>
+        </div>
+        </div>
+            </em></em></em></em></em></em></em></div><em><em>
+          </em></em>
+
+</body>
+</html>

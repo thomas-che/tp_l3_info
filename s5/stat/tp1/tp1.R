@@ -25,6 +25,7 @@ t=c(1,5,3,98,41,648,135,1,53,1,58,2.3,6,54,5)
 t[t<7 & 2<t]
 t[t<3 | 5<=t]
 
+
 matiere <- c("Anglais","Informatique","Biologie")
 note <- c(12,19.5,14)
 names(note) <- matiere
@@ -59,7 +60,7 @@ var(ech1) # varience en biais, S²n-1
 sum(ech1^2)/50 - (mean(ech1))^2
 
 hist?
-?hist
+  ?hist
 
 
 hist(ech1)
@@ -86,13 +87,42 @@ x0<-seq(min(loiN),max(loiN),length.out = 100)
 lines(x0,dnorm(x0,mean(loiN),sd(loiN)),col="green") #
 
 
-iris
 
 # TODO
 # hito sepal, petal pr versicolor et viginca : 4 graphes
 # comparer avec courbe gaussienne 
 
+# https://pbil.univ-lyon1.fr/R/pdf/bs01.pdf
+hist(iris$Petal.Length[iris$Species == "versicolor"], main="lengh petal versicolor", breaks = seq(0,8,lenght=20), probability = T)
+
+par(mfrow=c(1,4))
+hist(iris$Petal.Length[iris$Species == "versicolor"], main="lengh petal versicolor", breaks = 10, probability = T , col = "red")
+loiN<-iris$Petal.Length[iris$Species == "versicolor"]
+x0<-seq(min(loiN),max(loiN),length.out = 100)
+lines(x0,dnorm(x0,mean(loiN),sd(loiN)),col="black")
+
+hist(iris$Sepal.Length[iris$Species == "versicolor"], main="lengh sepal versicolor", breaks = 10, probability = T , col = "green")
+loiN<-iris$Sepal.Length[iris$Species == "versicolor"]
+x0<-seq(min(loiN),max(loiN),length.out = 100)
+lines(x0,dnorm(x0,mean(loiN),sd(loiN)),col="black")
+
+hist(iris$Petal.Length[iris$Species == "virginica"], main="lengh petal virginica", breaks = 10, probability = T , col = "yellow")
+loiN<-iris$Petal.Length[iris$Species == "virginica"]
+x0<-seq(min(loiN),max(loiN),length.out = 100)
+lines(x0,dnorm(x0,mean(loiN),sd(loiN)),col="black")
+
+hist(iris$Sepal.Length[iris$Species == "virginica"], main="lengh sepal virginica", breaks = 10, probability = T , col = "orange")
+loiN<-iris$Sepal.Length[iris$Species == "virginica"]
+x0<-seq(min(loiN),max(loiN),length.out = 100)
+lines(x0,dnorm(x0,mean(loiN),sd(loiN)),col="black")
+
+
+
+
+
+
 par(mfrow=c(1,1))
+
 
 # echantillon de poisson 5000 avec 4 param
 loiPoisson<-rpois(5000,4)
@@ -105,4 +135,16 @@ plot(t,ylim=c(0,990)) # diagrame en batton
 # echantillo de loi Binomiale n=100,p=0.25 de taille 500 simuler echantillon de loi de poisson de param 25 de taille 500 
 # comparer les 2 distribution d effectif 
 # refaire exo en variant n et p
+par(mfrow=c(1,2))
+
+x<-0:500
+loiBinom<-dbinom(x,size=500,prob=0.25)
+loiBinom
+t<-table(loiBinom)
+plot(t)
+
+loiPoisson<-rpois(500,25)
+loiPoisson
+t<-table(loiPoisson)
+plot(t)
 
