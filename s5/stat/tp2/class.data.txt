@@ -1,0 +1,152 @@
+
+  Numero sexe age  taille  departement      difficulte serie  
+  1 H  19 193   Loir.et.Cher   0        S    
+  2 F  18 178   Loiret         3        L    
+  3 H  19 182.6 Cher           1        S    
+  4 F  19 176.3 Loiret         4        S    
+  5 H  18 176.7 Cher           2        S    
+  6 F  19 168.8 Loiret         0        ES   
+  7 H  18 179.9 Loir.et.Cher   2        S    
+  8 H  19 166.6 Cher           2        S    
+  9 F  19 172.2 Loiret         0        ES   
+ 10 H  19 163.8 Eure.et.Loir   4        Autre
+ 11 F  19 174.9 Cher           1        ES   
+ 12 F  19 176.8 Loir.et.Cher   2        S    
+ 13 F  18 166.9 Eure.et.Loir   5        ES   
+ 14 H  18 162.7 Loiret         3        S    
+ 15 F  18 161.7 Loir.et.Cher   1        L    
+ 16 F  18 167.4 Loiret         3        L    
+ 17 F  18 157.6 Loiret         0        S    
+ 18 H  19 185.9 Eure.et.Loir   2        ES   
+ 19 H  19 170.6 Loiret         3        Autre
+ 20 F  18 165.7 Indre          3        ES   
+ 21 F  19 162.9 Cher           4        ES   
+ 22 H  18 177.7 Loir.et.Cher   2        S    
+ 23 F  18 168.5 Loir.et.Cher   2        S    
+ 24 H  19 195.9 Eure.et.Loir   2        S    
+ 25 H  19 187   Cher           2        ES   
+ 26 H  18 166.6 Eure.et.Loir   1        ES   
+ 27 H  18 173.5 Loir.et.Cher   3        ES   
+ 28 F  19 176.6 Loiret         3        S    
+ 29 F  18 155.7 Loiret         1        S    
+ 30 F  18 171.6 Loir.et.Cher   3        ES   
+ 31 F  19 163.9 Cher           3        ES   
+ 32 H  20 182.9 Cher           3        ES   
+ 33 F  19 183.6 Cher           4        Autre
+ 34 H  19 183.5 Loir.et.Cher   2        Autre
+ 35 H  19 159.3 Loiret         3        S    
+ 36 H  19 157.9 Eure.et.Loir   3        S    
+ 37 H  18 180   Indre          1        S    
+ 38 F  19 167.9 Loiret         2        ES   
+ 39 F  18 172.8 Eure.et.Loir   2        ES   
+ 40 H  18 171.6 Cher           1        Autre
+ 41 H  18 185.6 Loiret         2        ES   
+ 42 H  18 187.2 Indre          5        S    
+ 43 F  19 182.1 Eure.et.Loir   5        L    
+ 44 H  19 190.3 Loiret         1        ES   
+ 45 F  18 180.1 Loiret         0        ES   
+ 46 H  18 166.5 Loiret         3        S    
+ 47 H  18 166.9 Indre.et.Loire 1        S    
+ 48 F  19 159.8 Loir.et.Cher   3        ES   
+ 49 F  18 177.4 Loiret         1        ES   
+ 50 H  18 179.9 Cher           2        S    
+ 51 H  18 179.9 Loir.et.Cher   3        ES   
+ 52 F  19 164.4 Cher           4        L    
+ 53 F  19 164.4 Eure.et.Loir   1        S    
+ 54 H  18 158.7 Loiret         4        ES   
+ 55 H  19 184.8 Eure.et.Loir   1        Autre
+ 56 H  20 187.1 Loiret         1        S    
+ 57 H  18 180.2 Cher           2        L    
+ 58 F  19 158.9 Loir.et.Cher   3        S    
+ 59 H  19 184.4 Loir.et.Cher   2        S    
+ 60 F  19 169.1 Loiret         2        L    
+ 61 H  19 172.4 Loir.et.Cher   1        ES   
+ 62 H  19 181.4 Loir.et.Cher   2        ES   
+ 63 F  18 171.5 Loiret         2        S    
+ 64 H  18 163.3 Indre          1        ES   
+ 65 H  18 184.3 Indre.et.Loire 4        ES   
+ 66 F  19 180   Cher           4        Autre
+ 67 H  18 186.6 Loiret         1        S    
+ 68 H  19 167.8 Loir.et.Cher   3        S    
+ 69 H  18 170.7 Loiret         3        Autre
+ 70 H  19 169.4 Loiret         3        L    
+ 71 H  18 189.3 Eure.et.Loir   3        L    
+ 72 H  18 193.2 Indre          1        Autre
+ 73 H  19 183.1 Loiret         3        Autre
+ 74 F  19 171.4 Loir.et.Cher   1        ES   
+ 75 H  19 178.4 Loir.et.Cher   1        S    
+ 76 F  18 175.9 Eure.et.Loir   1        ES   
+ 77 H  18 182.5 Loir.et.Cher   4        S    
+ 78 H  19 175.3 Cher           4        Autre
+ 79 H  18 167.2 Cher           2        ES   
+ 80 H  18 175   Eure.et.Loir   2        ES   
+ 81 F  18 173   Loir.et.Cher   4        Autre
+ 82 H  19 172.6 Eure.et.Loir   2        ES   
+ 83 H  19 172.7 Loiret         2        S    
+ 84 F  18 156.9 Loir.et.Cher   3        ES   
+ 85 H  19 177.7 Loiret         2        S    
+ 86 H  19 179.9 Loiret         1        S    
+ 87 H  18 182.4 Loiret         4        ES   
+ 88 H  19 176.2 Cher           2        S    
+ 89 H  19 190   Loiret         0        ES   
+ 90 H  17 174.7 Loir.et.Cher   2        Autre
+ 91 F  18 162.2 Loiret         1        ES   
+ 92 F  18 170.6 Cher           2        S    
+ 93 F  19 180   Cher           3        S    
+ 94 F  19 171.3 Loiret         2        S    
+ 95 F  18 173.4 Loir.et.Cher   1        S    
+ 96 F  19 158.6 Eure.et.Loir   3        S    
+ 97 H  18 167.2 Loir.et.Cher   3        L    
+ 98 H  18 178.5 Cher           3        ES   
+ 99 H  18 174   Cher           0        ES   
+100 H  19 173.4 Eure.et.Loir   5        L    
+101 H  18 188.3 Loiret         1        S    
+102 H  18 178.2 Loir.et.Cher   3        ES   
+103 H  18 172.6 Loir.et.Cher   3        ES   
+104 H  18 177   Loiret         2        S    
+105 H  19 176.3 Loir.et.Cher   4        ES   
+106 H  19 204.8 Loiret         2        S    
+107 H  18 165.1 Loiret         2        S    
+108 H  19 167.4 Indre.et.Loire 0        S    
+109 H  19 175.9 Loiret         3        S    
+110 H  18 166.8 Loir.et.Cher   1        S    
+111 H  19 179.2 Loir.et.Cher   4        S    
+112 H  18 189.3 Eure.et.Loir   5        S    
+113 H  18 180.9 Loiret         2        S    
+114 H  19 175.1 Eure.et.Loir   3        S    
+115 F  19 156.3 Loiret         3        S    
+116 H  18 161.7 Cher           3        ES   
+117 H  18 158.3 Loir.et.Cher   3        ES   
+118 H  19 192.3 Loiret         4        Autre
+119 F  19 164.5 Loir.et.Cher   4        L    
+120 F  18 167.2 Loir.et.Cher   4        ES   
+121 F  18 164.2 Loir.et.Cher   4        Autre
+122 H  18 188.7 Loir.et.Cher   3        ES   
+123 H  18 184.2 Loir.et.Cher   3        L    
+124 H  18 168.9 Loir.et.Cher   4        L    
+125 F  19 189.4 Eure.et.Loir   2        ES   
+126 F  19 168   Indre          3        ES   
+127 H  18 169.2 Indre.et.Loire 4        ES   
+128 F  19 174.4 Cher           0        ES   
+129 H  19 177.3 Eure.et.Loir   1        S    
+130 H  18 158.2 Loir.et.Cher   3        L    
+131 F  19 155.5 Cher           2        ES   
+132 H  19 176.7 Loiret         3        ES   
+133 H  18 161.3 Loiret         3        S    
+134 F  19 162.5 Cher           0        S    
+135 H  19 165.1 Loir.et.Cher   3        ES   
+136 F  18 166.2 Loiret         3        ES   
+137 H  19 151.2 Cher           5        Autre
+138 F  18 173.4 Loir.et.Cher   4        L    
+139 H  19 195.5 Loiret         0        ES   
+140 F  19 175.8 Loir.et.Cher   1        S    
+141 H  18 167.7 Cher           2        S    
+142 H  18 201.4 Loiret         1        S    
+143 H  18 185.4 Loir.et.Cher   2        S    
+144 H  19 181   Indre          3        S    
+145 F  18 163.1 Loiret         4        Autre
+146 F  19 170.5 Eure.et.Loir   3        ES   
+147 F  19 177.3 Eure.et.Loir   4        Autre
+148 H  19 188.9 Loir.et.Cher   4        ES   
+149 H  19 181.4 Loir.et.Cher   1        ES   
+150 H  19 183.7 Loir.et.Cher   3        Autre

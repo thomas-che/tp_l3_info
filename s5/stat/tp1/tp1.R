@@ -96,15 +96,23 @@ lines(x0,dnorm(x0,mean(loiN),sd(loiN)),col="green") #
 hist(iris$Petal.Length[iris$Species == "versicolor"], main="lengh petal versicolor", breaks = seq(0,8,lenght=20), probability = T)
 
 par(mfrow=c(1,4))
-hist(iris$Petal.Length[iris$Species == "versicolor"], main="lengh petal versicolor", breaks = 10, probability = T , col = "red")
+hist(iris$Petal.Length[iris$Species == "versicolor"], main="lengh petal versicolor", breaks = 20, probability = T , col = "red")
 loiN<-iris$Petal.Length[iris$Species == "versicolor"]
 x0<-seq(min(loiN),max(loiN),length.out = 100)
 lines(x0,dnorm(x0,mean(loiN),sd(loiN)),col="black")
 
-hist(iris$Sepal.Length[iris$Species == "versicolor"], main="lengh sepal versicolor", breaks = 10, probability = T , col = "green")
+hist(iris$Sepal.Length[iris$Species == "versicolor"], main="lengh sepal versicolor", breaks = 20, probability = T , col = "green")
 loiN<-iris$Sepal.Length[iris$Species == "versicolor"]
 x0<-seq(min(loiN),max(loiN),length.out = 100)
 lines(x0,dnorm(x0,mean(loiN),sd(loiN)),col="black")
+
+# correction
+x=iris[iris$Species == "versicolor",1] # on veut espece versicolor et on prend la colone 1
+br0=seq(min(iris[,1]), max(iris[,1]), le=20 )
+hist(x,br=br0,proba=T,main="versicolor col 1",col="blue")
+x0=seq(min(x),max(x),length.out = 100)
+line(x0, dnorm(x0, mean(x), sd(x)), col="red")
+
 
 hist(iris$Petal.Length[iris$Species == "virginica"], main="lengh petal virginica", breaks = 10, probability = T , col = "yellow")
 loiN<-iris$Petal.Length[iris$Species == "virginica"]
@@ -119,7 +127,7 @@ lines(x0,dnorm(x0,mean(loiN),sd(loiN)),col="black")
 
 
 
-
+iris
 
 par(mfrow=c(1,1))
 
@@ -135,10 +143,10 @@ plot(t,ylim=c(0,990)) # diagrame en batton
 # echantillo de loi Binomiale n=100,p=0.25 de taille 500 simuler echantillon de loi de poisson de param 25 de taille 500 
 # comparer les 2 distribution d effectif 
 # refaire exo en variant n et p
-par(mfrow=c(1,2))
+par(mfrow=c(2,2))
 
-x<-0:500
-loiBinom<-dbinom(x,size=500,prob=0.25)
+x<-100
+loiBinom<-rbinom(x,size=500,prob=0.25)
 loiBinom
 t<-table(loiBinom)
 plot(t)
@@ -148,3 +156,25 @@ loiPoisson
 t<-table(loiPoisson)
 plot(t)
 
+
+x<-200
+loiBinom<-rbinom(x,size=500,prob=0.5)
+loiBinom
+t<-table(loiBinom)
+plot(t)
+
+loiBinom<-rbinom(20000,size=100,prob=0.25)
+loiBinom
+t<-table(loiBinom)
+plot(t)
+loiN<-loiBinom
+x0<-seq(min(loiN),max(loiN),length.out = 100)
+lines(x0,dnorm(x0,mean(loiN),sd(loiN)),col="black")
+
+
+#correction
+par(mfrow=c(2,1))
+x=rbinom(500,100,0.25)
+y=rpois(500,25)
+plot(table(x))
+plot(table(y))
