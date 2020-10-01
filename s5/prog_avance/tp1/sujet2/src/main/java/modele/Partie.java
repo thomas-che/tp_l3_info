@@ -17,7 +17,7 @@ public class Partie {
 
         if ( (x<0 && 2<x) || (y<0 && 2<y) ) {
             /*throw new CaseIndisponible;*/
-            System.out.printf("ERROR");
+            System.out.println("ERROR");
         }
 
         if (lePlateau.isCaseDispo(x, y) ){
