@@ -30,7 +30,7 @@ library(MASS)
 caith # pas use
 quine
 help (quine)
-
+par(mfrow=c(1,1))
 # diagrame fc pr age
 vec_age<-quine$Age
 t_age<-table(vec_age)

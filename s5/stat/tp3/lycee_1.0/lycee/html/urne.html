@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Fonction qui construit une urne contenant des boules. Chacune peut-être
+bleue, noire ou verte.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for urne {lycee}"><tr><td>urne {lycee}</td><td align="right">R Documentation</td></tr></table>
+<h2>Fonction qui construit une urne contenant des boules. Chacune peut-être
+bleue, noire ou verte.</h2>
+
+
+<h3>Usage</h3>
+
+<pre>
+urne(n1,n2,n3)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>n1</code></td>
+<td>
+est un nombre entier. </td></tr>
+<tr valign="top"><td><code>n2</code></td>
+<td>
+est un nombre entier. </td></tr>
+<tr valign="top"><td><code>n3</code></td>
+<td>
+est un nombre entier. </td></tr>
+</table>
+
+<h3>Examples</h3>
+
+<pre>
+u&lt;-urne(100000,40000,500000)
+t&lt;-tirage(1000,u)
+frequence(t)
+diagrammeenbarre(t)
+camembert(t)
+
+</pre>
+
+
+
+<hr><div align="center">[Package <em>lycee</em> version 1.0 <a href="00Index.html">Index]</a></div>
+
+</body></html>

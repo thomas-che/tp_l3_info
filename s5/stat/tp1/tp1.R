@@ -38,6 +38,7 @@ read.table("table1.dat")
 
 
 ech1<-runif(50,0,3)
+ech1
 avg<-0
 sum<-0
 for (pt in ech1) {
@@ -76,6 +77,7 @@ par(mfrow=c(1,2)) # pr afficher sur 1 col, 2 graphe
 hist(ech2,breaks=30, proba=T, col = "red") # histo de densite
 
 loiN<-rnorm(5000,0,1)
+rnorm(100,0,1)
 hist(loiN)
 hist(loiN,breaks = 50, probability = T, col = "red")
 dnorm(loiN)
@@ -175,6 +177,8 @@ lines(x0,dnorm(x0,mean(loiN),sd(loiN)),col="black")
 #correction
 par(mfrow=c(2,1))
 x=rbinom(500,100,0.25)
+x
 y=rpois(500,25)
+y
 plot(table(x))
 plot(table(y))
