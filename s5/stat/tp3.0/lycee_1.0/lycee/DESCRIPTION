@@ -1,0 +1,12 @@
+Package: lycee
+Version: 1.0
+Title: utilisation du logiciel R pour introduire les
+        probabilités-statistiques au collège puis au lycée.
+Date: 2008-03-30
+Author: IREM d'Orleans
+Maintainer: Sophie Jacquot <sophie.jacquot@univ-orleans.fr>
+Description: simulation de phénomènes aléatoire et description de
+        données,.
+License: GPL Version 2 ou plus.
+Packaged: Tue Sep 15 15:31:14 2009; Finet
+Built: R 2.6.1; ; 2009-09-15 15:31:24; windows

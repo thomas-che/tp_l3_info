@@ -1,4 +1,3 @@
-
 ###############################
 #                             #
 #           EX 1              #
@@ -6,49 +5,27 @@
 ###############################
 
 # 1)
-nb_e<-c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6 )
-nb_e
+vec_1<-rnorm(150,0,1)
+vec_1
 
 # 2)
-t_nb_e<-table(nb_e)
-t_nb_e
-plot(t_nb_e) # mode = 1
+tab_vec_1<-table(vec_1)
+plot(tab_vec_1)
 
-help (range)
-(r.x <- range(t_nb_e) ) # donne les modaliter min-max : 4 58
+# 3)
+mean(vec_1)
+sd(vec_1)
+summary(vec_1)
 
-summary(nb_e) # resume plein de donner sur le vecteur
+hist(vec_1, main="",breaks = 50, probability = T, col = "red")
+x0<-seq(min(vec_1),max(vec_1),length.out = 100)
+lines(x0,dnorm(x0,mean(vec_1),sd(vec_1)),col="green")
 
-#x <- nb_e
-#range(x)
-#range(x, na.rm = TRUE)
-#range(x, finite = TRUE)
+# correction
+x0<-seq(-4,4,by=0.01)
+plot(x0,dnorm(x0,mean(vec_1),sd(vec_1)),type='l')
+lines(x0,dnorm(x0,0,1),col="green")
 
-
-#3)
-t_fc<-t_nb_e/length(nb_e)
-t_fc
-t_fc_cum<-cumsum(t_fc)
-plot(t_fc_cum)
-plot(t_fc_cum,type="s")
-
-
-# corrr
-
-# courbe des frequences cumulee = fonction repartition empirique
-help(ecdf) 
-c=ecdf(nb_e)
-plot(c)
-
-
-#4)
-boxplot(nb_e)
-boxplot.stats(nb_e)
-
-#5)
-mean(nb_e) # calc = 1.735
-var(nb_e)
-sd(nb_e)
 
 ###############################
 #                             #
@@ -56,51 +33,31 @@ sd(nb_e)
 #                             #
 ###############################
 
-#1)
-etu<-c(rep(19,1),rep(20,3),rep(21,9),rep(22,5),rep(23,2))
-etu
+#1) homme et femme 42500 ouvriers 
 
-#2)
+# population = ouvrier groupe industriel
+# card(pop) = 42500
+# character observer = salaire annuel en k€
+# x = var quantitative considerer comme continue
 
+# 2)
+# reproduire echantillon donne brut (x1,x2,...,x42500)
+# on va considerer que dans chaque classe la repartition des donnes est uniforme
 
-###############################
-#                             #
-#           EX 3              #
-#                             #
-###############################
+sal_h<-c( runif(3145,2.5,5), runif(2465,5,6), runif(4675,6,7), runif(11220,7,8.5), runif(9180,8.5,10), runif(8160,10,12), runif(3655,12,14) )
+sal_h
+bk<-c(2.5,5,6,7,8.5,10,12,14)
 
-install.packages("/home/thomas/Documents/tp_l3_info/s5/stat/tp3/lycee_1.0.zip")
-# charger le fichier en tant que data dans Rstudio
-load("/home/thomas/.cache/.fr-2AJteU/robinet.rda")
-help(lycee)
-#lycee<- ...
+tab_sal_h=table(cut(sal_h,breaks = bk))
+tab_sal_h
 
-#1)
-guichet
-file<-guichet$queue
-summary(file)
+par(mrfrow=c(1,2))
+hist(sal_h,freq = T, breaks = bk)
+hist(sal_h,probability = T, breaks = bk)
 
-#2)
-
-boxplot(file)
-boxplot.stats(file)
-var(file)
-sd(file)
-
-
-#3)
-
-t_file<-table(file)
-plot(t_file/length(file))
-
-fn_repatition_empirique<-ecdf(file)
-plot(fn_repatition_empirique)
-
-
-#4)
-
-
-
+y=c(0,cumsum(tab_sal_h)/42500)
+plot(bk,y,type='l') # ligne briser des frequence cumuler
+quantile(sal_h,c(0.25,0.5,0.75)) # pr avoir les quartille du sal
 
 
 

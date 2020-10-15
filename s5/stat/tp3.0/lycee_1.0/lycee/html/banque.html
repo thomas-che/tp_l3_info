@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: banque /données banquaires</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for banque {lycee}"><tr><td>banque {lycee}</td><td align="right">R Documentation</td></tr></table>
+<h2>banque /données banquaires</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Une agence de banque dispose d'un fichier de données sur 810 clients (ces données ont été 
+récupérées dans le package ade4). Les variables sont qualitatives. 
+Les banques collectent de nombreuses données sur leurs clients, pour mieux les connaître avant 
+de leurs proposer les services les mieux adaptés (crédit confiance, épargne logement, 
+crédit à la consommation etc...).
+</p>
+<p>
+Quelle est la proportion d'agriculteurs, de retraités, d'étudiants... parmi leurs clients ?
+Ce client pourra-t-il rembourser ce prêt ? Qui est le plus susceptible de prendre une carte 
+bleue ? Qui risque d'être interdit banquaire ?...
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>data(banque)
+lire(banque)</pre>
+
+
+<h3>Format</h3>
+
+<p>
+Un tableau de 810 lignes et  21 colonnes.
+<dl>
+<dt><code>csp</code></dt><dd>catégorie socio-professionnelle du client <code>agric</code> (agriculteur exploitant), <code>artis</code> (artisant, commercant, chef), 
+<code>cadsup</code> (cadre supérieur), <code>inter</code> (professions intermédiaire), <code>emplo</code> (employés), <code>ouvri</code> (ouvrier),
+<code>retra</code> (retraité), <code>inact</code> (inactif) <code>etudi</code> (étudiant) .</dd>
+<dt><code>duree</code></dt><dd>durée des relations avec le clients <code>dm2</code> (&lt;2ans),<code>d24</code> (entre 2 et 4 ans),  <code>d48</code> (entre 4 et 8 ans), <code>d812</code> (entre 8 et 12 ans), <code>dp12</code> plus de 12 ans</dd>
+<dt><code>oppo</code></dt><dd><code>non</code> (n'a pas fait opposition à un chèque), <code>oui</code> (a fait opposition).</dd>
+<dt><code>age</code></dt><dd>age du client<code>ai25</code> (entre 18 et 25 ans), <code>ai35</code> (entre 25 et 35 ans), <code>ai45</code> (entre 45 et 55 ans),
+<code>ai55</code> (entre 45 et 55 ans) <code>ai75</code> (entre 55 et 75 ans).</dd>
+<dt><code>sexe</code></dt><dd>sexe du client. </dd>
+<dt><code>interdit</code></dt><dd><code>oui</code> (est interdit banquaire) <code>non</code> (n'est pas .)</dd>
+<dt><code>cableue</code></dt><dd><code>oui</code> (possède une carte bleue) <code>non</code> (ne possède pas. )</dd>
+<dt><code>assurvi</code></dt><dd><code>oui</code>(a une assurance vie),<code>non</code> (n'a pas .)</dd>
+<dt><code>soldevu</code></dt><dd>solde des comptes à vue <code>n1</code> (débiteur &lt;4000), <code>n2</code> (débiteur&gt;4000), 
+<code>p1</code> (créditeur &lt;4000), <code>p2</code> (créditeur entre 4000 et 12000), <code>p3</code> (créditeur entre 12000 et 20000),
+<code>p4</code> (créditeur &gt;20000)</dd>
+<dt><code>eparlog</code></dt><dd>montant des épargnes logement <code>fai</code> (&lt;20000), <code>for</code> (&gt;20000),
+<code>nul</code> (nulle.)</dd>
+<dt><code>eparliv</code></dt><dd>montant des épargnes sur livret <code>fai</code> (&lt;20000), <code>for</code> (&gt;20000), <code>nul</code> (nulle)</dd>
+<dt><code>credhab</code></dt><dd>titulaire de crédit habitat <code>non</code>, <code>oui</code></dd>
+<dt><code>credcon</code></dt><dd>montant des crédits à la consommation <code>fai</code>(&lt;20000) 
+<code>for</code>(&gt;20000), <code>nul</code>(aucun.)</dd>
+<dt><code>versesp</code></dt><dd>versement en espèce  <code>non</code> <code>oui</code></dd>
+<dt><code>retresp</code></dt><dd>retrait en espèce <code>fai</code>(&lt;2000), <code>for</code>(&gt;5000) 
+<code>moy</code>(entre 2000 et 5000.)</dd>
+<dt><code>remiche</code></dt><dd>montant des remises de chèques <code>fai</code>(&lt;5000), <code>for</code>(&gt;10000),
+<code>moy</code>(de 5000 à 10000), <code>nul</code></dd>
+<dt><code>preltre</code></dt><dd>montant des prélèvements du trésor <code>fai</code>(&lt;1000),
+<code>moy</code>(&gt;1000), <code>nul</code>.</dd>
+<dt><code>prelfin</code></dt><dd>montant des prélèvements des organismes <code>fai</code> (&lt;1000),
+<code>moy</code>(&gt;1000), <code>nul</code>.</dd>
+<dt><code>viredeb</code></dt><dd>montants des virements au débit <code>fai</code>(&lt;2500),
+<code>for</code>(&gt;5000), <code>moy</code> (entre 2500 et 5000), <code>nul</code>.</dd>
+<dt><code>virecre</code></dt><dd>montant des virments au crédit <code>fai</code>(&lt;5000), <code>for</code>(&gt;10000),
+<code>moy</code>(entre 5000 et 10000), <code>nul</code>.</dd>
+<dt><code>porttit</code></dt><dd>estimation des portefeuilles titres <code>fai</code>(&lt;20000), <code>for</code>(&gt;100000),  <code>moy</code>(entre 20000 et 100000), <code>nul</code>.</dd>
+</dl>
+
+<h3>Examples</h3>
+
+<pre>
+data(banque)
+lire(banque)
+camembert(credcon)
+diagrammeenbarre(age)
+
+</pre>
+
+
+
+<hr><div align="center">[Package <em>lycee</em> version 1.0 <a href="00Index.html">Index]</a></div>
+
+</body></html>

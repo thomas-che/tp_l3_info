@@ -1,0 +1,97 @@
+Abitibi                 Abitibi/données géochimiques
+QI                      QI/données de nature psychologique.
+ajusteexponentielle     Fonction qui trace l'histogramme et la densité
+                        de la loi exponentielle.
+ajustenormale           Fonction qui trace l'histogramme et la densité
+                        de la loi normale.
+avion                   Dossier renseigné de 2000 vols dans une
+                        compagnie aérienne/gestion
+avocat                  avocat/données de nature économique
+banque                  banque /données banquaires
+bebe                    bebe/données médicales
+boitemoustache          Fonction qui trace la boite à moustache
+boitesparalleles        Fonction qui trace sur le même graphique
+                        différentes boites à moustaches .
+camembert               Fonction qui trace le camembert ou diagramme en
+                        secteurs.
+cappulmonaire           cappulmonaire/données de type médical
+cholesterol             cholesterol/données de type médical.
+composant               composant/contrôle qualité.
+conte                   conte/texte
+diagrammeenbarre        Fonction qui trace le diagramme en barre
+dossierassure           dossier des assurés/actuariat
+ecarttype               Fonction qui donne l'écart type d'une variable
+                        numérique.
+entreprise              entreprise/données de type économique.
+frequence               Fonction qui donne les fréquences respectives
+                        des différentes valeurs observées.
+guichet                 guichet/ données de nature économique
+histogramme             Fonction qui trace l'histogramme
+jeudedes                Fonction qui simule le lancer d'un dés
+                        régulier.
+kyste                   diagnostique de kystes de l'ovaire/médical
+kystediscrimin1         Aide au diagnostique de kystes ovariens /type
+                        médical
+kystediscrimin2         Aide au diagnostique de kystes ovariens /type
+                        médical
+lire                    Fonction qui lit des données chargées
+                        préalablement avec la commande data.
+liretableauexcell       Fonction qui lit un tableau de données format
+                        csv.
+liretableautxt          Fonction qui lit un tableau de données format
+                        txt.
+loinormale              Function qui calcule, pour une variable qui
+                        suit une loi normale,la probabilité d'être
+                        inférieur à ou supérieur à un nombre.
+lycee-package           Utilisation du logiciel R au collège et au
+                        lycée
+m                       message codé/texte
+mediane                 Fonction qui donne la médiane d'une variable
+                        numérique.
+moyenne                 Fonction qui donne la moyenne arithmétique
+                        d'une variable numérique.
+nematode                nematode/médicale
+nuagedepoints           Fonction qui trace le nuage de points
+                        représentant deux variables quantitatives.
+pileface                Fonction qui simule le jeu de pile ou face avec
+                        une pièce équilibrée.
+population              Fonction qui construit une population de
+                        1000000 d'individus ayant une opinion oui ou
+                        non relativement à un sujet quelconque.
+poule                   poule/élevage
+poussin                 poussin/élevage
+pressionarterielle      pressionarterielle/données de type médical.
+publicite               influence du budget publicité/marketting
+random                  Fonction qui donne un nombre au hasard dans un
+                        intervalle [a,b].
+regression              Fonction qui calcul la droite de régression
+                        d'un nuage de points et trace le graphique.
+revenuetudiant          revenueetudiant/données économiques
+robinet                 robinet/médicale
+selection               Fonction qui sélectionne une partie d'une
+                        colonne.
+simuleexponentielle     Function qui simule une distribution
+                        exponentielle et trace son histogramme.
+simulenormale           Function qui simule une distribution normale et
+                        trace son histogramme.
+simulepoisson           Function qui simule une distribution de poisson
+                        et trace son histogramme.
+soleil                  soleil/données météorologiques.
+sondage                 Fonction qui prélève aléatoirement un
+                        échantillon dans une population.
+surgeles                surgeles/étude de marché
+tirage                  Fonction qui tire aléatoirement un échantillon
+                        dans une urne.
+tirageloto              Fonction qui simule le tirage du loto
+tpileface               Fonction qui simule le jeu de pile ou face avec
+                        une pièce truquée
+tumeur                  tumeur/données de type biologique
+tuyaux                  tuyaux/controle qualité
+urbanisme               urbanisation/démographique
+urne                    Fonction qui construit une urne contenant des
+                        boules. Chacune peut-être bleue, noire ou
+                        verte.
+variance                Fonction qui donne la variance d'une variable
+                        numérique.
+vecteur                 Fonction qui crée un vecteur à partie de 2
+                        vecteurs ou 2 nombres.
