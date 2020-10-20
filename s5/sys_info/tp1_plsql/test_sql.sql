@@ -1,4 +1,3 @@
-
 -- drop table
 
 DROP TABLE Formation ;
@@ -20,7 +19,7 @@ CREATE TABLE Competence (
     id_Enseigant                NUMBER(8) NOT NULL
     , matiere                   VARCHAR2(64) NOT NULL
     , CONSTRAINT PK_Competence PRIMARY KEY (id_Enseigant,matiere)
-    , CONSTRAINT FK_Competence_Formateur FOREIGN KEY (id_Enseigant) REFERENCES Formateur (id_Enseigant)
+    --, CONSTRAINT FK_Competence_Formateur FOREIGN KEY (id_Enseigant) REFERENCES Formateur (id_Enseigant)
     --, CONSTRAINT FK_Competence_Formation FOREIGN KEY (matiere) REFERENCES Formation (matiere)
 );
 
@@ -28,7 +27,7 @@ CREATE TABLE Contracts (
     id_Enseigant                NUMBER(8) NOT NULL
     , societe                   VARCHAR2(64) NOT NULL
     , CONSTRAINT PK_Contracts PRIMARY KEY (id_Enseigant,societe)
-    , CONSTRAINT FK_Contracts_Formateur FOREIGN KEY (id_Enseigant) REFERENCES Formateur (id_Enseigant)
+    --, CONSTRAINT FK_Contracts_Formateur FOREIGN KEY (id_Enseigant) REFERENCES Formateur (id_Enseigant)
     --, CONSTRAINT FK_Contracts_Foration FOREIGN KEY (societe) REFERENCES Formation (societe)
 );
 
@@ -39,8 +38,6 @@ CREATE TABLE Formation (
     --, CONSTRAINT FK_Formation_Competence FOREIGN KEY (matiere) REFERENCES Competence (matiere)
     --, CONSTRAINT FK_Formation_Contracts FOREIGN KEY (societe) REFERENCES Contracts (societe)
 );
-
-
 
 
 
@@ -74,5 +71,5 @@ Insert Into Formation(societe,matiere) Values ('ca','php');
 Insert Into Formation(societe,matiere) Values ('ca','python');
 
 
-
+Select * from Contracts;
 

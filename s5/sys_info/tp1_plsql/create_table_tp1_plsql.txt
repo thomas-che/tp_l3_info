@@ -1,0 +1,27 @@
+drop table formateur cascade constraints;
+drop table competence cascade constraints;
+drop table contrats cascade constraints;
+drop table formation cascade constraints;
+
+create table Formateur 
+    (id_Enseignant number(4) primary key 
+    , nom varchar2(32)
+    , prénom varchar2(32)
+    , date_naiss date
+    );
+    
+create table Competence
+    (id_Enseignant number(4) primary key references Formateur 
+    , matiere varchar2(32)
+    ); 
+
+create table Contrats
+    (id_Enseignant number(4) references Formateur
+    , societe varchar2(32)
+    , constraint pk_contrat primary key (id_Enseignant,societe) 
+    );
+create table Formation 
+    (societe varchar2(32)
+    ,matiere varchar2(32)
+    , constraint pk_formation primary key (societe,matiere)
+    );

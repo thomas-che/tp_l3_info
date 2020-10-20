@@ -1,0 +1,1 @@
+select NbAlbumPublic('u1@') from dual;
