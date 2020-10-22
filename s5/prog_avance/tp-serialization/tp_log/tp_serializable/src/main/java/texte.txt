@@ -1,0 +1,6 @@
+
+Rappel log :
+
+    - afficher msg propre
+
+
