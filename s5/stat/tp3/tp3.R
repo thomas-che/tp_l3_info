@@ -47,7 +47,7 @@ lines(x0,dnorm(x0,0,1),col="green")
 sal_h<-c( runif(3145,2.5,5), runif(2465,5,6), runif(4675,6,7), runif(11220,7,8.5), runif(9180,8.5,10), runif(8160,10,12), runif(3655,12,14) )
 sal_h
 bk<-c(2.5,5,6,7,8.5,10,12,14)
-
+rm(c)
 tab_sal_h=table(cut(sal_h,breaks = bk))
 tab_sal_h
 
@@ -60,6 +60,44 @@ plot(bk,y,type='l') # ligne briser des frequence cumuler
 quantile(sal_h,c(0.25,0.5,0.75)) # pr avoir les quartille du sal
 
 
+###############################
+#                             #
+#           EX 3              #
+#                             #
+###############################
+
+robinet
+#1)
+summary(robinet)
+
+#2)
+boxplot(robinet)
+
+t_fc_cum<-cumsum(table(robinet$consommation)/length(robinet$consommation))
+plot(t_fc_cum)
+
+# autre possibiliter : 
+# trier le robinet par ordre croissant, et chaque observation/lenght(tab)
+plot(sort(robinet$consommation),(1:length(robinet$consommation))/length(robinet$consommation),type='l')
+
+
+#3)
+par(mfrow=c(1,2))
+
+hist(robinet$consommation)
+
+hist(robinet$consommation, proba = T)
+
+hist(robinet$consommation, breaks = 5)
+hist(robinet$consommation, nsclass = 5)
+
+bk2<-c(0,50,100,200,350,550,800,1100,1450,3000)
+hist(robinet$consommation, freq = T , breaks = bk2)
+
+
+#4)
+x0<-seq(min(robinet$consommation),max(robinet$consommation))
+lines(x0,exp(1/mean(robinet$consommation)))
 
 
 
