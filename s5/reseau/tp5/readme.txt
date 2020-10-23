@@ -1,0 +1,3 @@
+Premierer partie, pas recuperer le lab que j'ai cree en sale machine...
+
+Pas fait la partie sur le dnsmasq.conf
