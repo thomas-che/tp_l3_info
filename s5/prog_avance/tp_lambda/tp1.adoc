@@ -1,0 +1,347 @@
+= Exercices PAJ : Expressions Lambdas
+Frédéric Moal <frederic.moal@univ-orleans.fr>
+v2.0, 2018-11-22: ré-écriture des exercices sur les lambdas
+:doctype: article
+ifndef::imagesdir[:imagesdir: ../images]
+ifndef::sourcedir[:sourcedir: ../../main/java]
+ifndef::resourcesdir[:resourcesdir: ../../main/resources]
+
+
+== Exercice - utilisation des interfaces fonctionnelles
+
+. Ecrire une lambda qui ajoute la chaine "fin" à la fin d'une liste de chaîne,
+puis une lambda qui ajoute "debut" au début d'une liste de chaine.
+. En utilisant les deux lambdas précédentes, en définir une qui fait les deux opérations.
+. Ecrire une lambda qui affiche une chaine de caractère
+. Ecrire un main qui vérifie votre code
+
+
+
+== Exercice - interface Predicat
+
+. Ecrire une interface fonctionnelle `PredicatString` possédant une méthode `test`
+permettant de tester une condition sur une chaîne de caractère.
+. Utiliser cette interface fonctionnelle pour définir deux lambdas :
+nulle qui renvoie vrai quand la chaîne est `null` et vide quand elle est vide.
+Tester ces prédicats.
+. Ajouter une méthode `not` dans votre interface qui permet d'obtenir la négation d'un prédicat.
+. Utiliser cette méthode pour définir les prédicats nonNulle et nonVide, puis les tester.
+. Ajouter une méthode `and` dans votre interface qui permet d'obtenir un et logique entre deux prédicats.
+. Utiliser cette méthode pour définir le prédicat nonNulleEtNonVide, puis le tester dans tous les cas.
+
+. Redéfinir une nouvelle interface `Predicat<T>` avec T un type générique, avec les mêmes méthodes
+ et les méthodes `or` et `xor` ; vérifier que vos tests précédents fonctionnent toujours avec cette nouvelle interface,
+ et ajouter des tests de prédicats sur une classe `Person` [en utilisant Lombok]
+ avec au moins un prédicat qui teste si le nom d'une personne commence par un J ou bien si son prénom est de taille 4.
+
+Que se passe-t-il si le second predicat d'un `and` est `null` ?
+
+
+== Exercice - Comparator
+
+Ajouter à votre projet les dépendances :
+[source,xml]
+----
+<dependencies>
+    <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.12</version>
+    </dependency>
+    <dependency>
+        <groupId>org.assertj</groupId>
+        <artifactId>assertj-core</artifactId>
+        <version>3.11.0</version>
+    </dependency>
+</dependencies>
+----
+
+Compléter le code suivant pour valider ce test unitaire :
+[source,java]
+----
+public class Test {
+
+    private Person michael = new Person("Michael", "Jackson", 51);
+    private Person rod = new Person("Rod", "Stewart", 71);
+    private Person paul = new Person("Paul", "McCartney", 74);
+    private Person mick = new Person("Mick", "Jagger", 73);
+    private Person jermaine = new Person("Jermaine", "Jackson", 61);
+
+    /**
+     * Write a comparator that compare instances of the Person
+     * class using the following rules:
+     * - the instances are first compared using their last names
+     * - then compared with their first names
+     * - then compared with their age
+     * - if this comparator is used to sort a list of Person
+     * instances, and this list contains null values, then these
+     * null values should be put at the end of the sorted list.
+     */
+    @Test
+    public void comparator_1() {
+        Comparator<Person> cmp = null; // TODO
+
+        assertThat(cmp.compare(michael, rod)).isLessThan(0);
+        assertThat(cmp.compare(paul, paul)).isEqualTo(0);
+        assertThat(cmp.compare(michael, jermaine)).isGreaterThan(0);
+        assertThat(cmp.compare(mick, null)).isLessThan(0);
+        assertThat(cmp.compare(null, mick)).isGreaterThan(0);
+    }
+}
+----
+
+== Exercice - Java 8 DateTime API
+
+Vous prenez l'avion demain à Paris à 14h30 pour New York !
+Le vol dure 8 heures et 10 minutes. Il sera quelle heure à New York à votre atterissage ?
+
+
+== Exercice - Fabrique de pièces
+
+Ré-écrire la fabrique de pièces du jeu d'échec en utilisant des Lambdas.
+
+
+== Exercice - Convertisseur
+
+Ecrire un convertisseur de monnaie qui permet d'écrire :
+
+[source,java]
+----
+Convertisseur convEurGbp =
+        Convertisseur.from("EUR").to("GBP");
+
+double euros = 1d;
+double gbp = convEurGbp.convert(euros);
+System.out.println("gbp = " + gbp);
+----
+
+Question bonus : charger les valeurs des monnaies depuis un fichier texte,
+avec un format de ligne USD=1.13851, en utilisant le code suivant :
+[source,java]
+----
+ Path path = Paths.get("data/valeurs.txt");
+ try (Stream<String> lines = Files.lines(path)) {
+       Map<String, Double> converterMap =
+             lines.collect(
+                  Collectors.toMap(
+                       line -> line.substring(0, 3),
+                       line -> Double.parseDouble(line.substring(4))
+                  )
+             );
+
+       // converterMap.get("USD") renvoie alors 1.13851
+
+ } catch (IOException e) {
+       e.printStackTrace();
+ }
+----
+
+
+
+== Exercice - ADN
+
+Dans cet exercice, on s’intéresse à des chaînes d’ADN, représentées par des chaînes de caractères
+de lettres A, C, T et G (les 4 bases nucléiques composant l’ADN).
+
+Exemple : la chaîne "ACTGGGACCTAGA"
+
+L’ADN est en fait composé de 2 brins dits complémentaires :
+en face de chaque acide aminé se trouve sont complémentaire.
+Ainsi : le complémentaire de A est T (A -> T), celui de C -> G,
+celui de G -> C, et celui de T -> A
+
+1. Déclarer et définir une lambda expression permettant de calculer le complémentaire d’une base nucléique (une lettre unique).
+Remarque : on peut utiliser un char (Attention!) ou une String pour cette lambda.
+
+Pour une chaîne d’ADN, le brin complémentaire va de plus être lu dans le sens inverse du brin d’origine.
+Donc sur l’exemple précédent, la chaîne ACTGGGACCTAGA, son complémentaire donnera la chaîne TCTAGGTCCCAGT.
+
+2. Définir une lambda permettant de calculer le brin complémentaire d’une chaîne d’ADN.
+Donner le code qui affiche le résultat de cette lambda sur la chaîne de l’exemple "ACTGGGACCTAGA"
+(Aide : la méthode chars() appliquée à une chaîne renvoie un stream [IntStream]
+des lettres [sous la forme d’int] de cette chaîne de caractère).
+
+. Pour faire des tests plus réalistes, on veut pouvoir générer de longues chaînes d’ADN ;
+en vous inspirant de l’exemple de génération aléatoire de mots du TP, donner le code utilisant les streams Java
+permettant d’obtenir une chaîne aléatoire d’ADN de taille 1_000_000. (Aide : écrire d’abord la lambda qui associe
+un nombre de 0 à 3 à une lettres A, C, T et G).
+
+. Dans cette chaîne aléatoire, donnez le code utilisant les streams permettant de compter le nombre de A dans la chaîne.
+
+. En utilisant un groupingBy de Collectors, donner le code permettant de calculer le nombre d’occurrences
+de chaque lettre dans la chaîne (pour les 4 lettres A,C,T et G) ; donner le code permettant d’afficher le résultat obtenu.
+ (Aide : on utilise ici une Map)
+
+
+
+
+== Exercice - Le compte est bon
+
+Le but de cet exercice est de découvrir comment utiliser des lambdas
+et des streams.
+
+. On cherche à compter le nombre d'occurences d'un mot dans une liste.
+[source,java]
+List<String> list = Arrays.asList("hello", "world", "hello", "lambda");
+System.out.println(count(list, "hello"));
+
+*  Écrire le code [java 7] de la méthode `count` sachant que le compteur est un entier long.
+
+. On cherche à écrire une méthode count2 qui fait la même chose que count
+mais en utilisant l'API des Stream.
+* Comment obtenir un Stream à partir d'un objet de type List ?
+* L'idée, ici, est de filtrer le stream pour ne garder que les mots égaux
+  au mot passé en paramètre puis de compter ceux-ci.
+  Quel sont les méthodes permettant respectivement de filtrer un stream
+  et de compter le nombre d’éléments ?
+* La méthode qui permet de filtrer prend un objet de type Predicate<T> en paramètre.
+  Dans notre cas, quel est le type correspondant à T ?
+* Indiquer le code permettant de créer une lambda filtrant sur le mot passé en paramètre
+  que l'on peut déclarer en tant que Predicate
+* Écrire le code de la méthode count2.
+
+
+== Exercice - En majuscule
+
+Le but de cet exercice est de découvrir comment utiliser,
+en plus des lambdas et des streams, des `method references`.
+
+. On cherche à écrire une méthode prenant en paramètre une liste de chaînes de caractères
+et renvoyant une nouvelle liste contenant les chaînes de caractères en majuscules.
+[source,java]
+List<String> list = Arrays.asList("hello", "world", "hello", "lambda");
+System.out.println(upperCase(list));
+
+* Écrire la méthode upperCase (dans un premier temps) sans utiliser l'API des Stream.
+
+
+. On cherche maintenant à écrire une méthode upperCase2 faisant la même chose.
+  Comment peut-on utiliser la méthode Stream.map ici ?
+  Pour stocker le résultat dans une nouvelle liste,
+  l'idée est de créer la liste puis d'ajouter chaque mot dans la liste.
+[source,java]
+  public static List<String> upperCase2(List<String> words) {
+    List<String> uppercases = new ArrayList<>();
+    ...
+
+*  pour demander l'ajout, on utilisera la méthode forEach.
+  Écrire le code de la méthode upperCase2 en utilisant des lambdas.
+
+. En fait, au lieu d'utiliser des lambdas, il est possible dans cet exemple
+d'utiliser la syntaxe des références de méthodes avec l'opérateur :: (coloncolon).
+Écrire une méthode upperCase3 qui utilise la syntaxe des référence de méthodes.
+
+. En fait, au lieu d'utiliser forEach, il est plus pratique d'utiliser la méthode collect
+  avec comme Collector celui renvoyé par la méthode Collectors.toList().
+  Écrire une méthode upperCase4 en utilisant le collector Collectors.toList().
+
+
+== Exercice - Comptons sur une réduction
+
+Le but de cet exercice est de découvrir comment effectuer une réduction sur un stream.
+Lors du premier exercice, nous avons utilisé la méthode count qui retourne un entier long.
+On souhaite maintenant écrire une nouvelle méthode count3 qui renvoie un entier sur 32 bits.
+Pour cela, une fois les mots filtrés, nous allons transformer (avec map)
+chaque mot en 1 (le nombre) puis nous allons, avec la méthode reduce, faire l'agrégation des valeurs.
+
+. Expliquer pourquoi nous n'allons pas utiliser la méthode map mais la méthode mapToInt ?
+. Écrire le code de la méthode méthode count3.
+
+
+== Exercice - Evaluation de vitesse
+
+On cherche à savoir, parmi les 3 façons d'écrire count, quelle est la plus rapide.
+Nous allons pour cela utiliser une liste définie par le code suivant
+[source,java]
+List<String> list2 =
+  new Random(0)
+    .ints(1_000_000, 0, 100)
+    .mapToObj(Integer::toString)
+    .collect(Collectors.toList());
+
+. Expliquer ce que contient la variable locale list2.
+. On cherche à écrire une méthode printAndTime permettant de calculer le temps d'exécution
+  de l'appel à la méthode count sur la list2.
+  Pour calculer le temps d'exécution, on demande le temps avant puis le temps après
+  et si l'on soustrait les deux temps, on trouve le temps d'exécution.
+[source,java]
+  long start = System.nanoTime();
+  ... // faire le calcul
+  long end = System.nanoTime();
+  System.out.println("result " + result);
+  System.out.println(" elapsed time " + (end - start));
+
+
+* Écrire le code de printAndTime.
+
+. On souhaite également calculer le temps d’exécution avec d'autres méthodes,
+  comme count2 par exemple. Comment faire pour NE PAS dupliquer le code
+  pour le calcul du temps d’exécution?
+  Quelle interface fonctionnelle doit-t-on utiliser sachant que l'on va appeler printAndTime de la façon suivante?
+[source,java]
+  printAndTime(() -> count(list2, "33"));
+  printAndTime(() -> count2(list2, "33"));
+  printAndTime(() -> count3(list2, "33"));
+
+*  Écrire le nouveau code de printAndTime.
+
+. Expliquer les résultats obtenus.
+
+. Faire la moyenne sur 10 run des temps d'exécution des différentes implémentations de count, en parallèle ou non.
+
+
+== Exercice - Function
+
+* Ecrivez une méthode static addFunction qui prend un entier n en paramètre
+et qui retourne une fonction qui prend un entier en paramètre et qui retourne un Long
+qui est égal à cet entier+n
+
+* Utilisez cette méthode pour afficher la somme de 3 et de 5.
+
+* Créez une liste d'entiers. Utilisez ensuite cette méthode add pour transformer cette liste
+en une autre liste dont tous les éléments sont égaux aux éléments de la première liste + 78.
+Avec forEach faites afficher tous les éléments de la nouvelle liste.
+Par exemple, si on part d'une liste dont les éléments sont 1, 4, 7, 5,
+il sera affiché 79, 82, 85, 83 (un nombre par ligne).
+
+
+== Exercice - Listes
+
+.  écrire une fonction permettant de concaténer un certain nombre de listes,
+passées en paramètre sous forme de var-arg : `public <T> List<T> concatLists(List<T>... lists)`
+.. écrire une version Java 7 avec un foreach
+.. écrire une nouvelle version en Java 8 en utilisant `reduce` avec la liste vide et
+un BinaryOperator de réduction sur un stream.
+.. écrire une nouvelle version en utilisant une lambda à la place du BinaryOperator.
+.. écrire une nouvelle version en utilisant une method reference sur une méthode statique que vous définirez.
+.. écrire une méthode statique qui prend en paramètre une BiFunction
+et renvoie un BinaryOperator qui fait la même opération en n'utilisant pas le retour de la BiFunction ;
+appliquer cette méthode sur List::addAll pour ré-écrire une nouvelle version de la méthode.
+
+
+
+
+== Exercice - Fichiers
+
+Pour lire un fichier texte en Java 8, on utilise évidemment les Streams :
+
+[source,java]
+Stream stream = Files.lines(Paths.get(fileName),StandardCharsets.UTF_8))
+
+* Ecrire un fichier "jours.txt" contenant les jours de la semaine ;
+afficher à l'écran tous les jours se terminant par "di".
+Où placer le fichier dans le projet ?
+
+** Pour vous aidez, vous pouvez récupérer la liste des fichiers d'un répertoire ainsi :
+[source,java]
+Path lepath = Paths.get("chemin");
+Files.list(lepath)
+        .map(path -> path.getFileName().toString()));
+
+
+* Proposez une solution pour lire et écrire des Objets Java de type Personne, avec plusieurs champs.
+
+* Récupérez le fichier `macdonalds.csv` sur la fiche ; afficher la ville ayant le plus de MacDo.
+
+
+

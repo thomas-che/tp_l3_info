@@ -1,11 +1,12 @@
-create or replace function NbImage (email IN varchar2) return number as
+create or replace function Occupe (email IN varchar2) return number as
     nb number;
 begin
-    Select count(*) into nb from Image 
+    -- nvl permet si pas de valeur on met un 0 par default 
+    Select NVL(sum(taille),0) into nb from Image 
         Natural JOIN
     (select idalbum from Album where eMailClient=email);
     return(nb);
 end;
 /
 
-select NbImage('u1@') from dual;
+select Occupe('u1@') from dual;
