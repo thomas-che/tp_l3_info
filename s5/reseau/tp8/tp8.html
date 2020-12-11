@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr"><head>
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<title>TP8 — IPv6</title>
+<style type="text/css" media="all">
+#pied {
+    font-size: 80%;    
+    text-align: right;
+    font-style: italic;
+}
+
+.toc { 
+    font-size: 80%;
+    position: fixed;
+    top: 1em;
+    right: 1em;
+    width: 15em;
+    background-color: #eee;
+    margin: 0px;
+    padding: 0px 
+    -moz-border-radius: 0.6em;
+    border-radius: 0.6em;
+}      
+
+.toc ul {
+    list-style-type: none;
+    padding: 0em 1em;
+}
+
+.toc ul ul {
+    font-size: 90%;
+}
+
+#tour {
+    display: inline-block;
+    text-align: justify;
+    width: 60em;
+    padding: 2em;
+}
+
+body {
+	font: normal 12pt sans-serif;
+    line-height: 1.3em;
+	text-align: left;
+	margin: 3em;
+	padding: 2em;
+}
+
+#header h2 {
+    font-weight: normal;
+    font-style: italic;
+}
+
+#body h2 {
+    margin-top: 2em;
+    padding-bottom: 0.25em;
+}
+
+
+#body h3 {
+    margin-top: 2em;
+    padding-bottom: 0.25em;
+}
+
+#body h1 {
+    border-bottom: 1px solid black;
+    padding-bottom: 0.25em;
+	margin-top: 2em;
+}
+
+a {
+    color: #ee7700;
+    font-weight: bold;
+	text-decoration: none;
+}
+
+.toc a {
+    color: black;
+}
+
+blockquote {
+	margin-left: 5em;
+	margin-top:2em;
+	font-style:italic;
+}
+
+hr {
+	margin-top:3em;
+}
+
+pre {
+    padding: 1em;
+    background-color: #fce4cc;
+    -moz-border-radius: 0.6em;
+    border-radius: 0.6em;
+}
+</style>
+<style type="text/css" media="print">
+body {
+    font-size: 10pt
+}
+.toc, #pied {
+    display: none;
+}
+</style>
+</head>
+<body>
+<div id="tour">
+<div id="header">
+<h1>TP8 — IPv6</h1>
+<h2>L3 réseaux</h2>
+<h3>novembre/décembre 2019</h3>
+</div>
+<div id="corps">
+<div class="toc">
+
+
+</div>
+<div class="body" id="body">
+
+Cette séance est une introduction à IPv6, on s'intéresse à l'adressage (<a href="https://tools.ietf.org/html/rfc4291">RFC 4291</a>), l'autoconfiguration et le routage statique dans ce cadre. On utilisera ici les commandes modernes <code>ip</code> plutôt qu'<code>ifconfig</code> ou <code>route</code>. 
+  
+<h1 id="toc1">Adresse locale</h1>
+
+<p>
+  On peut utiliser <b>Netkit</b> sans créer un lab : la commande </p><pre>vstart NomMachine --eth0=A</pre> permet de créer une machine virtuelle en donnant le répertoire dans lequel se trouvera le disque dur associé. Créer 5 machines <b>alice</b>, <b>bob</b>, <b>charlie</b>, <b>daisy</b> et <b>r</b> telles que <b>r</b> serve de routeur entre le réseau d'<b>alice</b> et <b>bob</b> et celui de <b>charlie</b> et <b>daisy</b>.<p></p>
+
+<p> On arrêtera les machines avec </p><pre>vcrash -r NomMachine</pre>
+<p></p>
+
+<p>
+Avec la commande <code>ip addr</code> (équivalent de <code>ifconfig</code>), observer les interfaces et adresses IPv6 associées après avoir activé les interfaces (<code>ip link set eth0 up</code>). En comparant avec l'adresse MAC, déterminer comment est choisie l'adresse de lien local (<code>scope link</code>) ?
+</p>
+<p>
+Vérifier que les machines à l'intérieur d'un réseau local peuvent se joindre : <code>ping6 -c 2 addripv6%eth0</code>. Pourquoi est-il indispensable de spécifier l'interface ?
+</p>
+<p>Est-il envisageable de communiquer hors du réseau local avec cette adresse ? 
+</p>
+
+<h1 id="toc2">Adresse globale</h1>
+
+<p>On va ajouter des adresses routables à ce réseau pour faire 
+communiquer les 2 réseaux locaux. On choisit des adresses dans le réseau
+ local <b>2001:ad38::/64</b> pour <b>alice</b>, <b>bob</b> et <b>r</b>, et dans <b>2001:ad54::/64</b> pour <b>charlie</b>, <b>daisy</b> et <b>r</b>. Avec la commande <code>ip addr add addripv6/mask dev eth0</code>, donner une adresse IPv6 à chaque interface. 
+</p>
+<p>Vérifier qu'il est possible de joindre toutes les machines du réseau local.
+</p>
+<p>Activer l'acheminement des paquets sur <b>r</b> avec <code>echo 1 &gt; /proc/sys/net/ipv6/conf/all/forwarding</code>.
+</p>
+<p>Il reste à configurer les tables de routage des différentes machines en utilisant la commande <code>ip route add netaddr via gwaddr</code>. Vérifier que toutes les machines peuvent communiquer. La commande <code>ip -6 route</code> affiche la table de routage.
+</p>
+
+<p>Le protocole ARP permet de faire le lien entre les adresses IPv4 
+(couche réseau) et les adresses MAC (couche liaison). En lançant 
+wireshark (<code>vdump A | wireshark -i - -k &amp;</code>), déterminer quels messages remplacent ARP pour IPv6. Que fait la commande <code>ip neigh</code> ?
+
+
+
+  </p><h1 id="toc3">Autoconfiguration RADVD (<a href="https://tools.ietf.org/html/rfc2461">RFC 2461</a>)</h1>
+<p>
+La première option d'autoconfiguration utilise un Router ADVertisement Daemon. Dans <b>labmini6</b>, <code>radvd</code> est configuré sur le routeur <b>r</b>.
+</p>
+  
+<p>Démarrer <b>labmini6</b> et ouvrir wireshark dans le réseau d'<b>alice</b>. Activer l'interface d'<b>alice</b> et observer les échanges. Comment est obtenue l'adresse d'<b>alice</b> ?
+</p>
+
+<p>Lire le fichier <code>/etc/radvd.conf</code> de <b>r</b> pour comprendre comment <b>alice</b> et <b>bob</b> obtiennent des adresses différentes.
+</p>
+
+<p>Décrire les 4 messages échangés lorsque l'interface d'<b>alice</b> est activée. Quel est le rôle de chacun ?
+</p>
+
+<h1 id="toc4">Autoconfiguration DHCP (<a href="https://tools.ietf.org/html/rfc3315">RFC 3315</a>)</h1>
+
+<p>
+  On va maintenant utiliser DHCP pour l'autoconfiguration. Le 
+fonctionnement est très similaire à celui observé pour IPv4. On veut 
+créer un lab avec un routeur servant aussi de serveur DHCP et 
+distribuant des adresses à des clients dans le réseau <b>2abc:1871::/32</b>.
+ En prenant exemple sur un service DHCP fonctionnel (par exemple dans 
+labobs, TP1) et en adaptant aux noms de commandes ipv6, ou en suivant 
+les instructions suivantes, créer le lab et éditer les fichiers de 
+configuration nécessaires. On commencera par extraire l'archive <code>dhcpv6.tar.gz</code> à la racine de chaque machine. Dans l'ordre (les différences principales avec IPv4 sont mentionnées ici) :
+  </p><ul>
+    <li> créer <code>dhcpd.conf</code> dans le répertoire <code>root/</code> du serveur DHCPv6;</li>
+    <li> créer <code>dhcpv6/leases/dhcpd6.leases</code>;</li>
+    <li> la commande côté serveur : <code>/dhcpv6/bin/dhcpd -6 -cf /root/dhcpd.conf -lf /dhcpv6/leases/dhcpd6.leases</code>
+    </li><li> client : créer le fichier <code>/dhcpv6/leases/dhclient6.leases</code>;</li>
+    <li> la commande côté client : <code>/dhcpv6/bin/dhclient -6 -lf /dhcpv6/leases/dhclient6.leases eth0 -sf /dhcpv6/scripts/linux</code>
+<p></p>
+
+    Un exemple de fichier <code>dhcpd.conf</code> (adresses à modifier) :
+    <pre>      option dhcp6.domain-search "plop.fr";
+      option dhcp6.name-servers 2001:1::1;
+      default-lease-time 600;
+      max-lease-time 7200;
+      subnet6 2001:1::/64 {
+          range6 2001:1::10 2001:1::20;
+      }
+    </pre>
+
+</li></ul></div>
+
+
+</div>
+</div>
+
+
+
+</body></html>

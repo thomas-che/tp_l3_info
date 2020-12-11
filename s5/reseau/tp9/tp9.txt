@@ -1,0 +1,46 @@
+
+
+on obtient la rep pr un bgp de 194.167.30.240
+http://lg.bt.net/cgi-bin/welcome
+
+# on a trois chemein
+Paths: (3 available, best #1, table default)
+
+# 1er chemin: il passe par 2 system autonome : 21320 et 2200
+21320 2200, (aggregated by 2200 193.51.179.12)
+
+
+# on regarde les who is, et les AS 
+https://dnslytics.com/ip/194.167.30.240
+https://dnslytics.com/bgp/as4641
+
+
+
+
+# on lance le lab
+# alise sur le rezo k
+vstart alice --eth0=K
+ip link set eth0 up 
+ip addr add 100.1.3.2/24 dev eth0
+route add default gw 100.1.3.1
+
+bob sur m
+ifconfig 200.1.128.100/17 # pr aatribuer l'ip
+route add default gw 200.1.128.2
+
+# sur bob on idetifie les routeur traverser pour aller vers alice
+traceroute 100.1.3.2
+# ... on regarde par quel routeur est passer le ping et on repertorie sur le graphe
+
+# sur alice
+traceroute 200.1.128.110
+# ... pariel
+# 
+
+
+# sur as20r2
+telnet 127.0.0.1 bgpd # mdp = zebra
+show ip bgp # pr voir les regles de preference 
+show ip bgp neighors # detail sur la relation entre les voisin
+
+
