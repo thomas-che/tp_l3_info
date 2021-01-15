@@ -20,23 +20,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b040cba-4a82-4291-a77a-e633a3733d0e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../tp-jdbc/sujet_4_jdbc/correction_definitif/sujet_4_jdbc/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../tp-jdbc/sujet_4_jdbc/correction_definitif/sujet_4_jdbc/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../stat/tp3/tp3.R" beforeDir="false" afterPath="$PROJECT_DIR$/../../../stat/tp3/tp3.R" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../tp-rmi/tp1/hello/hello.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../exam2020/exam2020.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tp_serialisation/serialisation.iml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
-      </MavenGeneralSettings>
-    </option>
   </component>
   <component name="ProjectId" id="1jFRdprz5CLADyr7KSKjSpPo8ed" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -48,7 +45,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../tp_serialisation" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../tp_lambda/pom.xml" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -59,6 +56,7 @@
       <option name="presentableId" value="Default" />
       <updated>1603397942381</updated>
       <workItem from="1603397943592" duration="901000" />
+      <workItem from="1608040238164" duration="684000" />
     </task>
     <servers />
   </component>
@@ -75,11 +73,6 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="743" y="298" width="424" height="491" key="FileChooserDialogImpl" timestamp="1603398842729">
-      <screen x="0" y="27" width="1920" height="1053" />
-    </state>
-    <state x="743" y="298" width="424" height="491" key="FileChooserDialogImpl/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1603398842729" />
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

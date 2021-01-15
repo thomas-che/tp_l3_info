@@ -1,0 +1,54 @@
+exercice 1 :
+1-3
+2-1
+3-2 et 4 : une éciture sur u bloque une ecriture sur u 
+4-3
+5-2
+6-2
+7-2
+8-3
+9-insert,delete,update
+10-6000 car le drop table valide la transaction du coup le roll back concerne une nouvelle transaction vide donc aucun effet
+11-a : dans la session 1 update t1 set x=1 puis dans la session 2 update t2 set x=2 puis dans la session 1 update t2 set x=0 puis dans la session 2 update t1 set x=0. La session 1 se bloque après son second update puis la session 2 se bloque après son second update. 
+11-b : Oracle détecte cet interblocage et libère la session 1 sans lui faire ni rollback ni commit mais en annulant juste son second update. Cette transaction est donc non finie et on peut rajouter des instructions jusqu a valider par commit ou rollback. L'autre session reste en attente.  
+12-a : T2 est par défaut donc elle est en read committed et T1 est en read only donc on ne voit pas les changements dans T1 car read only =[serializable+lecture uniquement]. Donc la transaction read only ne voit pas ce qui se passe ailleurs tant qu'elle a pas fini. Si T1 commit alors elle vera enfin les changements faits par T2.   
+12-b : comme T1 est en read only on ne peut pad faire de modification (pas de insert ni delete ni update) donc on ne pas rien changer et on aura un message d'erreur : ORA-01456: impossible d'exÚcuter l'opÚration insÚrer/supprimer/modifier dans
+une transaction READ ONLY
+13-a : non elle les voit pas
+13-b : ERREUR ORA-08177: impossible de serialiser l'acces pour cette transaction. Car en serializable si une autre transaction commit apres le debut de la transaction serializable puis la transaction serializable veut changer cette meme ligne on aura un message d erreur. 
+13-c : aucun probleme t2 verra cette modif mais pas T1 et quand T2 commit t1 verra les modifs
+
+Exercice 2 : les deux transaction déamarrent donc en read committed 
+ grant ALL ON  t to u2   --> donc u2 doit écrire u1.t partout au lieu de t (je le fais pas ci dessous mais vous devez le faire dans votre corrigé)
+ insert into t values(-1);		seul t1 voit le -1 de plus la table est bloqué RX (verouillage pas defaut des insert delete update)
+ lock table t in exclusive mode nowait ; refus car t est vérouille en RX deja
+ lock table t  in row share  mode ; pas de probleme car RX de t1 autorise le blocage RS deandé ici dans t2. t1 voit le -1 mais t2 toujours pas
+ insert into t values(-2); t2 voit uniquement le -2 et t1 voit uniqiement le -1
+ update t set a=3 where a=0; mise à jour faite seule t2 la voit
+ update t set a=4 where a=0; mise en attente car cette ligne est verrouillé avant 
+ commit -> t2 voit -2 et -3 et t1 est débloqué mais la mise à jour a=4 ne se fait pas car il n'y a plus de ligne avec x=0 dans t
+ commit -> t2 et t1 voit -2,3 et -1 mais pas de 4. 
+ select * from khalil.t where a=-1 for update; la ligne a=-1 est bloqué 
+ update t set a=3 where a=-1; t2 est en attente a cause de la ligne precedente
+ update  khalil.t set a=0 where a=-1 : t1 voit -2,3,0 et t2 est toujours bloqué et voit -2,3,-1
+ commit -> t2 est débloqué mais ca mise a jour passe pas car il n'y a plus de -1 dans la table. les deux voient : -2,3,0
+ commit -> les deux voient : -2,3,0
+ lock table t  in  share  mode ;
+ lock table t  in  exclusive mode nowait ; ca passe pas car la table est bloqué en S 
+ update khalil.t set a=-1 where a=2; mise en attente car on est bloqué S et le update equivaut a une demande de verrou RX interdit quand on est en S
+ update t set a=2 where a=-2; ca passe t1 est toujours bloqué et t2 voit 2,3,0
+ commit -> t1 est débloqué et sa mise à jour passe. T2 voit 2,3,0 alors que t1 voit -1,3,0
+ commit -> les deux voient -1,3,0
+ lock table t  in  share row exclusive mode;
+ lock table khalil.t in row share mode nowait;
+ insert into t values(5) -> mise en attente car le mode SRX empeche les ecriture 
+ delete from t; t2 ne voit plus rien et t1 voit -1,3,0
+ commit -> t1 est débloque il execute son insertion mais seule lui la voit et t2 ne voit rien
+ rollback -> t1 finit en annulant donc les deux ne voit rien dans t
+ lock table t  in  share  mode ;
+ insert into t values(-1); seul t2 le voit et t1 voit rien dans t
+ drop table t : erreur affichée et pas de mise en attente. 
+ alter table t add(b number); transaction auto commitée donc le -1 dans a et null dans b est visible par t1 et t2;
+  alter table t add(constraint pk_t_a primary key(a));
+  drop table t -> la tables est effacée. elle n'exite plus ni dans t1 ni dans t2
+  drop table t -> erreur car la table n existe plus 

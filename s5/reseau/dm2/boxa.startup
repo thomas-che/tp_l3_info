@@ -1,0 +1,9 @@
+#TODO
+ifconfig eth0 192.168.84.2/23
+ifconfig eth1 85.1.1.254/24
+
+route add default gw 85.1.1.1
+
+iptables -t nat -A POSTROUTING -o eth1 -j SNAT --to 85.1.1.254
+
+
